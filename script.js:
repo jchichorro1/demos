@@ -1,0 +1,25 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('userForm');
+    const userList = document.getElementById('userList');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const endereco = document.getElementById('endereco').value;
+        const telefone = document.getElementById('telefone').value;
+
+        if (nome && endereco && telefone) {
+            addUser(nome, endereco, telefone);
+            form.reset();
+        }
+    });
+
+    function addUser(nome, endereco, telefone) {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>Nome:</strong> ${nome}<br>
+                        <strong>Endereço:</strong> ${endereco}<br>
+                        <strong>Telefone:</strong> ${telefone}`;
+        userList.appendChild(li);
+    }
+});
